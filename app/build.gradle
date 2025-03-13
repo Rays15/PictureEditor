@@ -4,13 +4,13 @@ plugins {
 
 android {
     namespace 'com.vachel.editing'
-    compileSdkVersion 33
-    buildToolsVersion "32.0.0"
+    compileSdk 35
+//    buildToolsVersion "34.0.0"
 
     defaultConfig {
         applicationId "com.vachel.editing"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
 
