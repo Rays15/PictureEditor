@@ -3,11 +3,14 @@
     package="com.vachel.editor">
 
     <application>
-        <activity android:name=".PictureEditActivity"
+        <activity
+            android:name=".PictureEditActivity"
+            android:exported="false"
             android:theme="@style/EditTheme"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            android:exported="false"/>
-
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".EmojiPicEditActivity"
+            android:theme="@style/EditTheme" />
     </application>
 
 </manifest>

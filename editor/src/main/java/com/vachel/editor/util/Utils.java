@@ -90,9 +90,12 @@ public class Utils {
         }
     }
 
-    public static String saveBitmap(Context context, Bitmap bitmap) {
+    public static String saveBitmap(Context context, Bitmap bitmap, String path) {
         boolean saveSuccess;
-        String path;
+        if (path != null && !path.isEmpty()) {
+            saveSuccess = BitmapUtil.saveBitmapFile(bitmap, path.replace("file://", ""));
+            return saveSuccess ? path : "";
+        }
         String displayName = "image_" + getCurrentFormatTime() + ".jpg";
         if (Build.VERSION.SDK_INT >= 29) {
             saveSuccess = BitmapUtil.saveBitmapWithAndroidQ(context, bitmap, displayName);

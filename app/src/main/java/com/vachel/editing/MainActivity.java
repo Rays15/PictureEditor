@@ -1,5 +1,6 @@
 package com.vachel.editing;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,8 +10,11 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import com.vachel.editor.EmojiPicEditActivity;
 import com.vachel.editor.PictureEditActivity;
 import com.vachel.editor.util.Utils;
 
@@ -76,8 +80,20 @@ public class MainActivity extends AppCompatActivity {
         String directory = getCacheDir().getAbsolutePath();
         final File file = new File(directory + File.separator + "test_image.jpg");
         Uri uri = Uri.fromFile(file);
-        Intent editIntent = new Intent(this, MyPicEditActivity.class);
+        Intent editIntent = new Intent(this, EmojiPicEditActivity.class);
+//        Intent editIntent = new Intent(this, MyPicEditActivity.class);
         editIntent.putExtra(PictureEditActivity.EXTRA_IMAGE_URI, uri);
-        startActivity(editIntent);
+        editIntent.putExtra(PictureEditActivity.EXTRA_SAVE_PATH, directory + File.separator + "img_" + System.currentTimeMillis() + ".jpg");
+        startActivityForResult(editIntent, 201);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == 201 && resultCode == RESULT_OK && data != null) {
+            String path = data.getStringExtra(PictureEditActivity.RESULT_IMAGE_SAVE_PATH);
+            Log.i("MainActivity", "onActivityResult: path:" + path);
+            Toast.makeText(this, "保存到：" + path, Toast.LENGTH_LONG).show();
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

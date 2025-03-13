@@ -34,6 +34,7 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         IEditSave,
         PictureEditView.IOnPathListener {
     public static final String EXTRA_IMAGE_URI = "image_uri";
+    public static final String EXTRA_SAVE_PATH = "save_path";
     public static final String RESULT_IMAGE_SAVE_PATH = "result_image_save_path";
 
     protected PictureEditView mPictureEditView;
@@ -132,6 +133,7 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         }
 
         mPictureEditView.setOnPathListener(this);
+        mModeGroup.post(() -> onModeClick(EditMode.DOODLE));
     }
 
     @Override
@@ -146,7 +148,8 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         } else if (vid == R.id.btn_undo) {
             onUndoClick();
         } else if (vid == R.id.tv_done) {
-            mPictureEditView.saveEdit(this);
+            String path = getIntent().getStringExtra(EXTRA_SAVE_PATH);
+            mPictureEditView.saveEdit(this, path);
         } else if (vid == R.id.tv_cancel) {
             onCancelClick();
         } else if (vid == R.id.ib_clip_cancel) {

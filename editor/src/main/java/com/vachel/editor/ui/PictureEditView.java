@@ -240,18 +240,15 @@ public class PictureEditView extends FrameLayout implements Runnable, ScaleGestu
         mPicPresenter.setClipWindowRender(clipRender);
     }
 
-    public boolean saveEdit(@NonNull IEditSave callback) {
+    public void saveEdit(@NonNull IEditSave callback, String path) {
         Bitmap bitmap = getBitmap();
-        if (bitmap != null) {
-            String savePath = Utils.saveBitmap(getContext(), bitmap);
-            Utils.recycleBitmap(bitmap);
-            if (!TextUtils.isEmpty(savePath)) {
-                callback.onSaveSuccess(savePath);
-                return true;
-            }
+        String savePath = Utils.saveBitmap(getContext(), bitmap, path);
+        Utils.recycleBitmap(bitmap);
+        if (!TextUtils.isEmpty(savePath)) {
+            callback.onSaveSuccess(savePath);
+            return;
         }
         callback.onSaveFailed();
-        return false;
     }
 
     @NonNull
