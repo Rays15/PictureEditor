@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">រួចរាល់</string>
+    <string name="image_editor_cancel">បោះបង់</string>
+    <string name="image_editor_hint">ជំនួយ</string>
+    <string name="image_editor_msg_save_edit_result">តើ​អ្នក​បញ្ចប់​ហើយ ឬ​ទើប​តែ​ចេញ? </string>
+    <string name="image_editor_quit">ចេញ</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

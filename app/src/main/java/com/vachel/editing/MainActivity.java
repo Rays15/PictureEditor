@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.i("MainActivity", "onActivityResult: requestCode:" + requestCode + " resultCode:" + resultCode);
         if (requestCode == 201 && resultCode == RESULT_OK && data != null) {
             String path = data.getStringExtra(PictureEditActivity.RESULT_IMAGE_SAVE_PATH);
             Log.i("MainActivity", "onActivityResult: path:" + path);

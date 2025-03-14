@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">완료</string>
+    <string name="image_editor_cancel">취소</string>
+    <string name="image_editor_hint">힌트</string>
+    <string name="image_editor_msg_save_edit_result">완료하셨나요, 아니면 종료하시겠어요? </string>
+    <string name="image_editor_quit">종료</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

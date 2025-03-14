@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">Hoàn tất</string>
+    <string name="image_editor_cancel">Hủy</string>
+    <string name="image_editor_hint">Gợi ý</string>
+    <string name="image_editor_msg_save_edit_result">Bạn đã hoàn tất hay chỉ đang thoát? </string>
+    <string name="image_editor_quit">Thoát</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

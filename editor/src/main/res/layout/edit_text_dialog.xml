@@ -27,7 +27,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
             android:layout_marginStart="4dp"
-            android:text="@string/image_cancel"
+            android:text="@string/image_editor_cancel"
             android:textColor="@color/image_color_primary"
             android:textSize="16sp" />
 
@@ -42,7 +42,7 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="4dp"
             android:layout_marginEnd="4dp"
-            android:text="@string/image_done"
+            android:text="@string/image_editor_done"
             android:textColor="@color/image_color_primary"
             android:textSize="16sp" />
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">เสร็จสิ้น</string>
+    <string name="image_editor_cancel">ยกเลิก</string>
+    <string name="image_editor_hint">คำแนะนำ</string>
+    <string name="image_editor_msg_save_edit_result">คุณเสร็จสิ้นแล้วหรือแค่ออกไป? </string>
+    <string name="image_editor_quit">ออก</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

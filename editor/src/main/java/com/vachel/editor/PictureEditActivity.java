@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.vachel.editor.ui.PictureEditView;
@@ -148,10 +149,9 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         } else if (vid == R.id.btn_undo) {
             onUndoClick();
         } else if (vid == R.id.tv_done) {
-            String path = getIntent().getStringExtra(EXTRA_SAVE_PATH);
-            mPictureEditView.saveEdit(this, path);
+            onDone();
         } else if (vid == R.id.tv_cancel) {
-            onCancelClick();
+            onBackPressed();
         } else if (vid == R.id.ib_clip_cancel) {
             onCancelClipClick();
         } else if (vid == R.id.ib_clip_done) {
@@ -163,6 +163,11 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         } else if (vid == R.id.sticker_img) {
             onStickImgClick();
         }
+    }
+
+    private void onDone() {
+        String path = getIntent().getStringExtra(EXTRA_SAVE_PATH);
+        mPictureEditView.saveEdit(this, path);
     }
 
     public void onStickImgClick() {
@@ -297,10 +302,6 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         mPictureEditView.undo();
     }
 
-    public void onCancelClick() {
-        finish();
-    }
-
     @Override
     public void onSaveSuccess(String savePath) {
         setResult(RESULT_OK, new Intent().putExtra(RESULT_IMAGE_SAVE_PATH, savePath));
@@ -311,6 +312,25 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
     public void onSaveFailed() {
         setResult(RESULT_CANCELED);
         finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.image_editor_hint)
+                .setMessage(R.string.image_editor_msg_save_edit_result)
+                .setPositiveButton(R.string.image_editor_retain, (dialog, which) -> {
+                    dialog.dismiss();
+                    onDone();
+                })
+                .setNegativeButton(R.string.image_editor_cancel, (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .setNeutralButton(R.string.image_editor_quit, (dialog, which) -> {
+                    dialog.dismiss();
+                    finish();
+                })
+                .show();
     }
 
     public void onCancelClipClick() {
