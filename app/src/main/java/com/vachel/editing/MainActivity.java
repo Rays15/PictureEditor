@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         final File file = new File(directory + File.separator + "test_image.jpg");
         Uri uri = Uri.fromFile(file);
         Intent editIntent = new Intent(this, EmojiPicEditActivity.class);
-//        Intent editIntent = new Intent(this, MyPicEditActivity.class);
         editIntent.putExtra(PictureEditActivity.EXTRA_IMAGE_URI, uri);
         editIntent.putExtra(PictureEditActivity.EXTRA_SAVE_PATH, directory + File.separator + "img_" + System.currentTimeMillis() + ".jpg");
         startActivityForResult(editIntent, 201);
