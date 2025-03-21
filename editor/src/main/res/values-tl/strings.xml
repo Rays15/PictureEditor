@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">Tapos na</string>
+    <string name="image_editor_cancel">Kanselahin</string>
+    <string name="image_editor_hint">Pahiwatig</string>
+    <string name="image_editor_msg_save_edit_result">Tapos ka na ba o kalalabas lang? </string>
+    <string name="image_editor_quit">Lumabas</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

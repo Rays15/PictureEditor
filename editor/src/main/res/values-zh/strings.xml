@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_editor_done">完成</string>
+    <string name="image_editor_cancel">取消</string>
+    <string name="image_editor_hint">提示</string>
+    <string name="image_editor_msg_save_edit_result">您是否完成还是直接退出？</string>
+    <string name="image_editor_quit">退出</string>
+    <string name="image_editor_retain">@string/image_editor_done</string>
+</resources>

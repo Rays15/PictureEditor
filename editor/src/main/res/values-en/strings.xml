@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="image_editor_done">Done</string>
-    <string name="image_editor_cancel">Cancel</string>
-    <string name="image_editor_hint">Hint</string>
-    <string name="image_editor_msg_save_edit_result">Are you done or just quitting? </string>
-    <string name="image_editor_quit">Quit</string>
-    <string name="image_editor_retain">@string/image_editor_done</string>
-</resources>
