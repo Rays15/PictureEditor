@@ -51,7 +51,7 @@ afterEvaluate {
 }
 
 dependencies {
-    api 'androidx.appcompat:appcompat:1.7.0'
-    api 'androidx.constraintlayout:constraintlayout:2.1.4'
-    api 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
 }
