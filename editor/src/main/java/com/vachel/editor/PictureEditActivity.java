@@ -3,11 +3,15 @@ package com.vachel.editor;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsetsController;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
@@ -15,6 +19,9 @@ import android.widget.ViewSwitcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.vachel.editor.ui.PictureEditView;
 import com.vachel.editor.ui.widget.ColorGroup;
@@ -56,6 +63,7 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
     private View mUnDoView;
     private ProgressDialog mWaitDialog;
     public boolean mSupportEmoji = false;
+    private String paddingStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +71,27 @@ public class PictureEditActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.picture_edit_activity);
         mWaitDialog = new ProgressDialog(this).bindLifeCycle(this);
         mWaitDialog.show();
+        if (Build.VERSION.SDK_INT >= 35) {
+            Window window = getWindow();
+            window.setNavigationBarColor(Color.parseColor("#ffffff"));
+            WindowInsetsController controller = window.getInsetsController();
+            if (controller != null) {
+                controller.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS
+                );
+            }
+            View contentView = findViewById(android.R.id.content);
+            ViewCompat.setOnApplyWindowInsetsListener(contentView, (v, insets) -> {
+                Insets insets1 = insets.getInsets(WindowInsetsCompat.Type.navigationBars());
+                String s = insets1.toString();
+                if (!s.equals(paddingStr)) {
+                    paddingStr = s;
+                    contentView.setPadding(insets1.left, insets1.top, insets1.right, insets1.bottom);
+                }
+                return insets;
+            });
+        }
         new LoadBitmapTask(this).execute();
     }
 

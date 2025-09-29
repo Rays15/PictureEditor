@@ -30,12 +30,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         copyTestImageToLocalIfNeed();
-        findViewById(R.id.edit_pic).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkPermission()){
-                    editImage();
-                }
+        findViewById(R.id.edit_pic).setOnClickListener(v -> {
+            if(checkPermission()){
+                editImage();
             }
         });
         checkPermission();
@@ -68,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private boolean checkPermission() {
-        int hasPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (hasPermission != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-            return false;
-        }
+//        int hasPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+//        if (hasPermission != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+//            return false;
+//        }
         return true;
     }
 
